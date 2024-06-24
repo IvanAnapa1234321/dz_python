@@ -1,0 +1,35 @@
+
+{% extends 'base.html' %}
+{%block title%}Наши категории{%endblock%}
+{% block content %}
+<div class="text-center border-bottom h1">
+    Категории
+</div>
+  <div class="container">
+    <div class="nav-scroller border-bottom py-1 mb-3">
+    <nav class="nav  nav-underline justify-content-between">
+      <select class="box">
+        <option >  Малосемейка</option>
+        <option> Квартиры свободной планировки</option>
+        <option>Квартиры-студии</option>
+        <option>Однокомнатные квартиры</option>
+        <option>Двухкомнатные квартиры</option>
+        <option> Трехкомнатные квартиры</option>
+        <option> Большие квартиры</option>
+        <option>Пентхаусы</option>
+        <option> Апартаменты</option>
+        <option selected>Квартиры{{parent_id}}</option>
+      </select>
+    <a href='qwerty'  class="nav-item nav-link link-underline link-body-emphasis active ">Домовладения{{id}}</a>
+    <a href='qwerty'   class="nav-item nav-link link-underline link-body-emphasis ">   Участки{{id}}</a>
+    <a href='qwerty'   class="nav-item nav-link link-underline link-body-emphasis">  Коммерческая{{id}}</a>
+    <a href='qwerty'   class="nav-item nav-link link-underline link-body-emphasis"> Гараж{{id}}</a>
+    <a href='qwerty'   class="nav-item nav-link link-underline link-body-emphasis"> Обмен{{id}}</a>
+    <a href='qwerty'   class="nav-item nav-link link-underline link-body-emphasis">Аренда{{id}}</a>
+     </nav>
+    </div>
+
+  
+ 
+
+{% endblock %}
