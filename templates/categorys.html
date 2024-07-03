@@ -5,10 +5,14 @@
 <div class="text-center border-bottom h1">
     Категории
 </div>
-  <div class="container">
+<div class="col text-center">
+  <div class="form-control"><a href="/category/new" class="btn btn-primary ">Добавить</a></div>
+</div>
+
+  <div class="container" >
     <div class="nav-scroller border-bottom py-1 mb-3">
     <nav class="nav  nav-underline justify-content-between">
-      <select class="box">
+      <select class="box" >
         <option >  Малосемейка</option>
         <option> Квартиры свободной планировки</option>
         <option>Квартиры-студии</option>
@@ -18,16 +22,13 @@
         <option> Большие квартиры</option>
         <option>Пентхаусы</option>
         <option> Апартаменты</option>
-        <option selected>Квартиры{{parent_id}}</option>
+        <option selected>Квартиры</option>
       </select>
-    <a href='qwerty'  class="nav-item nav-link link-underline link-body-emphasis active ">Домовладения{{id}}</a>
-    <a href='qwerty'   class="nav-item nav-link link-underline link-body-emphasis ">   Участки{{id}}</a>
-    <a href='qwerty'   class="nav-item nav-link link-underline link-body-emphasis">  Коммерческая{{id}}</a>
-    <a href='qwerty'   class="nav-item nav-link link-underline link-body-emphasis"> Гараж{{id}}</a>
-    <a href='qwerty'   class="nav-item nav-link link-underline link-body-emphasis"> Обмен{{id}}</a>
-    <a href='qwerty'   class="nav-item nav-link link-underline link-body-emphasis">Аренда{{id}}</a>
-     </nav>
+      {% for category in categorys %}
+        <a href='category/{{category.id}}'  class="nav-item nav-link link-underline link-body-emphasis active ">{{category.title}}</a>
+      {% endfor %}
     </div>
+   
 
   
  

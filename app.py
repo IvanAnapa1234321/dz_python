@@ -20,15 +20,36 @@ def category():
     category_list = Category.query.all()
     return render_template('categorys.html',categorys=category_list)
 @app.route('/category/<int:category_id>')
-def blog_post(category_id,id):
+def blog_post(category_id):
     blog = Category.query.get_or_404(category_id)
+    return render_template('category.html', category=blog)
+
+@app.route('/category/new', methods=['GET', 'POST'])
+def new_post():
     if request.method == 'POST':
-        category.id = request.form['id']
-        category.parent_id= request.form['parent_id']
+        title = request.form['title']
+        post = Category(title=title)
+        db.session.add(post)
         db.session.commit()
         return redirect(url_for('category'))
-    return render_template('categorys.html', category=blog)
+    return render_template('new_category.html')
 
+@app.route('/edit_post/<int:category_id>', methods=['GET', 'POST'])
+def edit_post(category_id):
+    post = Category.query.get_or_404(category_id)
+    if request.method == 'POST':
+        category.title=request.form['title']
+        post.content = request.form['content']
+        return redirect(url_for('category'))
+    categories = Category.query.all()
+    return render_template('edit_post.html', post=post, categories=categories)
+
+@app.route('/delete_category/<int:category_id>', methods=['GET', 'POST'])
+def delete_post(category_id):
+    category = Category.query.get_or_404(category_id)
+    db.session.delete(category)
+    db.session.commit()
+    return redirect(url_for('delete_category.html'))  
  
 
  

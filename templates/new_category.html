@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1 class="text-center">Новая запись</h1>
+  <div class="col-6 mx-auto">
+  <form method="POST">
+    <div class="form-group">
+      <strong><label for="title">Заголовок:</label></strong>
+      <input type="text" class="form-control" id="title" name="category" required>
+    </div>
+    <div class="form-group">
+      <strong><label for="content">Текст заметки:</label></strong>
+      <textarea class="form-control" id="title" name="post" required></textarea>
+    </div>
+    
+    <button type="submit" class="btn btn-outline-primary mt-5">Сохранить</button>
+  </form>
+</div>
+{% endblock %}
