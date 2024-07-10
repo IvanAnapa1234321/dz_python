@@ -1,6 +1,6 @@
 
-from flask import Flask, render_template, request, redirect, url_for
-from models import Category, db
+from flask import Flask, render_template, request, redirect, url_for, send_from_directory
+from models import Category, Post, db
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///category.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -11,9 +11,6 @@ db.init_app(app)
 def index(): 
     return render_template('index.html')
 
-@app.route('/qwerty')
-def qwerty(): 
-    return render_template('qwerty.html')
 
 @app.route('/category')
 def category():
@@ -34,23 +31,31 @@ def new_post():
         return redirect(url_for('category'))
     return render_template('new_category.html')
 
-@app.route('/edit_post/<int:category_id>', methods=['GET', 'POST'])
+@app.route('/edit/<int:category_id>', methods=['GET', 'POST'])
 def edit_post(category_id):
-    post = Category.query.get_or_404(category_id)
+    category = Category.query.get_or_404(category_id)
     if request.method == 'POST':
         category.title=request.form['title']
-        post.content = request.form['content']
+        db.session.add(category)
+        db.session.commit()
         return redirect(url_for('category'))
-    categories = Category.query.all()
-    return render_template('edit_post.html', post=post, categories=categories)
+    return render_template('edit_post.html',  category=category)
 
-@app.route('/delete_category/<int:category_id>', methods=['GET', 'POST'])
-def delete_post(category_id):
+@app.route('/delete/<int:category_id>', methods=['GET', 'POST'])
+
+def delete_post(category_id: int):
     category = Category.query.get_or_404(category_id)
-    db.session.delete(category)
-    db.session.commit()
-    return redirect(url_for('delete_category.html'))  
+    if request.method == 'POST':
+   
+      db.session.delete(category)
+      db.session.commit()
+      return redirect(url_for('category'))
+    return render_template('delete_category.html',category=category)  
  
+@app.route('/static')
+def get_static(path: str):
+    return send_from_directory('static',path)
+
 
  
 
