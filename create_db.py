@@ -6,14 +6,14 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///category.db'
 db.init_app(app)
 
 def new_func():
-    post1=Post(
-            content='IUCBNWeicbwCWicniwCNIJNICW')
-    post2=Post(
-            content='IUCBNWeicbwCWicniwCNICW')
+        post1=Post(title='hnjuaeiyr',
+        content='IUCBNWeicbwCWicniwCNIJNICW',
+        category_id=1)
         
-    db.session.add(post1)
-    db.session.add(post2)
-    db.session.commit()
+ 
+        
+        db.session.add(post1)
+        db.session.commit()
 
 if __name__ == '__main__':
     with app.app_context():

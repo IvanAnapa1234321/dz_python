@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1 class="text-center border-bottom">Новая запись</h1>
+  <div class="col-6 mx-auto">
+  <form method="POST">
+    <div class="form-group">
+      <strong><label for="title">Заголовок:</label></strong>
+      <input type="text" class="form-control" id="title" name="title" required>
+
+      <select name="category_id">
+        {%for category in categorys%}
+        <option value="{{category.id}}">{{category.title}}</option>
+        {% endfor %}
+      </select>
+      <input type="text" class="form-control" id="title" name="content">
+
+      
+    </div>
+   
+    
+    <button type="submit" class="btn btn-outline-primary mt-5">Сохранить</button>
+  </form>
+</div>
+{% endblock %}
