@@ -1,16 +1,25 @@
 {%extends 'base.html'%}
 {% block content %}
-<h1 class="text-center">{{category.title}}<h1>
-   
+
+<div class="nav-scroller border-bottom  py-1 mb-3">
+  <nav class="nav  nav-underline justify-content-between">
+  {% for category in categorys %}
+  <a href='/category/{{category.id}}'  class="nav-item nav-link link-underline link-body- active ">{{category.title}}</a>
+  {% endfor %}
+</nav>
+</div>
+
+
+<h1 class="text-center">{{category.title}}<h1><hr>
 
  
     <div class="container  text-center ">
         <div class="row "> 
           <div class="col">
-           <div class="form-control"> <a href="/edit/{{category.id }}" class="btn btn-secondary ">Изменить</a></div>
+           <div class="form-control"> <a href="/category/edit/{{category.id }}" class="btn btn-secondary ">Изменить</a></div>
           </div>
           <div class="col">
-            <div class="form-control"><a href="/delete/{{category.id }}" class="btn btn-danger">Удалить</a></div>
+            <div class="form-control"><a href="/category/delete/{{category.id }}" class="btn btn-danger">Удалить</a></div>
           </div>
           <div class="col">
             <div class="form-control"><a href="/category" class="btn btn-primary ">Назад</a></div>
@@ -18,4 +27,9 @@
         </div>
       </div>
  </div>
+ 
+    {% for post in posts %}
+      <h2><a href='/post/{{post.id}}'  class="nav-item nav-link link-underline link-body-active ">{{post.title}}</a></h2><hr>
+    {% endfor %} 
 {% endblock %}
+  
