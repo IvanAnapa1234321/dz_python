@@ -1,3 +1,55 @@
- .background{
-    background-size: ;
+ .shapka {
+    background-color: rgb(146, 171, 219);
+    display: flex;
+    width: auto;
+    align-items: center;
+
  }
+ .anapa-aib {
+  justify-content: flex-start;
+  color: white;
+  padding: 7px;
+  margin-right: auto;
+ }
+ .container-1 a {
+    color: white;
+    padding: 7px;
+    
+ }
+ 
+ .block-main {
+    margin-top: 70px;
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 270px;
+    height: 700px;
+    
+    
+    
+ }
+ .block-categoriy-shapka {
+    display: flex;
+    background-color: darkslateblue;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+      
+ }
+ .block-categoriy {
+    background-color: rgb(40, 123, 201);
+    color: #fff;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 20px;
+ }
+ .block-categoriy a {
+    margin-left: 35px;
+    margin-bottom: 15px;
+    color: #fff;
+
+ }
+
+ 

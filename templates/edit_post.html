@@ -11,13 +11,23 @@
   <h1 class="text-center border-bottom">Редактирование записи</h1>
   <div class="col-6 mx-auto">
   <form method="POST">
-    <div class="mb-3">
-      <label for="title" class="form-label">Заголовок</label>
+    <div class="mb-3"> 
+      <label for="title" class="form-label">Название поста</label> 
+
+      <input type="text" class="form-control" id="title-post" name="title-post" value="{{ post.title}}" required>
+  
+      <label for="title-post" class="form-label">Содержание поста</label>
+
       <input type="text" class="form-control" id="content" name="content" value="{{ post.content}}" required>
-      <input type="text" class="form-control" id="title" name="title" value="{{ post.title}}" required>
-      <input type="text" class="form-control" id="title" name="title" value="{{ category.title }}" required>
+
+      <label for="title-category" class="form-label">Название категории</label>
+
+      <input type="text" class="form-control" id="title-category" name="title-category" value="{{ category.title }}" required>
+
     </div>
+
     <button type="submit" class="btn btn-primary">Сохранить</button>
+    
   </form>
 </div>
 {%endblock%}

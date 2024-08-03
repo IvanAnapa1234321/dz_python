@@ -9,13 +9,15 @@ db.init_app(app)
 
 @app.route('/')
 def index(): 
-    return render_template('index.html')
-
-
-@app.route('/category')
-def category():
     category_list = Category.query.all()
-    return render_template('categorys.html',categorys=category_list)
+    return render_template('base.html', categorys=category_list)
+
+
+# @app.route('/category')
+# def category():
+#     category_list = Category.query.all()
+#     return render_template('categorys.html',categorys=category_list)
+
 
 
 
@@ -24,7 +26,7 @@ def blog_post(category_id):
     blog = Category.query.get_or_404(category_id)
     category_list = Category.query.all()
     posts = Post.query.filter_by(category_id=category_id).order_by(Post.id.desc()).all()
-    return render_template('category.html', category=blog, posts=posts ,categorys=category_list)
+    return render_template('category.html',  category=blog, posts=posts ,categorys=category_list)
 
 
 
@@ -67,9 +69,6 @@ def delete_category(category_id: int):
     return render_template('delete_category.html',category=category,categorys=category_list)  
 
  
-@app.route('/static')
-def get_static(path: str):
-    return send_from_directory('static',path)
 
 
 @app.route('/post')
@@ -109,15 +108,14 @@ def edit_post(post_id):
     edit_blog=Post.query.get_or_404(post_id)
     category = Category.query.get_or_404(edit_blog.category_id)
     if request.method == 'POST':
-        post.title=request.form['title']
-        post.content=request.form['content']
-        category.title=request.form['title']
-        post1 = Post(title=post.title,  title=category.title, content=post.content)
-        db.session.add(edit_blog,category,post1=post1 )
+        edit_blog.title=request.form['title-post']
+        edit_blog.content=request.form['content']
+        category.title=request.form['title-category']
+        db.session.add(edit_blog,category)
         db.session.commit()
         return redirect(url_for('post'))
     category_list = Category.query.all()
-    return render_template('edit_post.html', post=post,category=category,categorys=category_list)  
+    return render_template('edit_post.html', post = edit_blog, category = category, categorys = category_list)  
 
 
 
@@ -149,9 +147,4 @@ if __name__ == '__main__':
    
    
    
-    # @app.route('/')
-# def hello():
-#     return 'Hello, World!'
-
-# if __name__ == '__main__':
-#     app.run()
+ 
