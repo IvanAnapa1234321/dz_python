@@ -51,7 +51,7 @@ def edit_category(category_id):
         category.title=request.form['title']
         db.session.add(category)
         db.session.commit()
-        return redirect(url_for('category'))
+        return redirect(url_for('/'))
     category_list = Category.query.all()
     return render_template('edit_category.html',  category=category,categorys=category_list)
 

@@ -18,12 +18,13 @@
  }
  
  .block-main {
-    margin-top: 70px;
+    margin-top: 40px;
     margin-left: 20px;
-    margin-right: 20px;
+    margin-right: 30px;
+    margin-bottom: 5px;
     width: 270px;
-    height: 700px;
-    
+    height: 800px;
+
     
     
  }
@@ -44,12 +45,31 @@
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     padding: 20px;
+    height: 700px;
+
+     
  }
  .block-categoriy a {
-    margin-left: 35px;
-    margin-bottom: 15px;
+ 
     color: #fff;
 
+ }
+ .container1 {
+   display: flex;
+   height:auto;
+   width: auto ;
+    
+ 
+ }
+ .content {
+   height: 600px;
+   width: 350px;
+   margin-top: 40px;
+
+ }
+ .container{
+   display: flex;
+   justify-content: space-around;
  }
 
  
