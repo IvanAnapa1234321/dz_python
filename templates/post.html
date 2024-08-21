@@ -2,21 +2,22 @@
 {% block content %}
 
  
- <h1 class="text-center">{{post.title}}<h1><hr>
+ <h2 >{{post.title}}</h2> 
 
-  <div class=".container">
+  <div class=".container my-1">
+    
+    <a href="/post/new" class="btn btn-primary  btn-sm ">Добавить</a>
+
+    <a href="/post/edit/{{post.id }}" class="btn btn-warning btn-sm">Изменить</a>
         
-    <a href="/post/edit/{{post.id }}" class="btn btn-primary">Изменить</a>
-        
-    <a href="/post/delete/{{post.id }}" class="btn btn-danger">Удалить</a>
+    <a href="/post/delete/{{post.id }}" class="btn btn-danger btn-sm">Удалить</a>
      
-    <a href="/post/new" class="btn btn-warning ">Добавить</a>
-      
+    
   <div>
 
     <div>
-      <h3>{{post.content}}<h3><hr>
-      <h4>{{category.title}}</h4><hr>
+      <h4>{{post.content}}<h4> 
+      <h5>{{category.title}}</h5> 
     </div>
 
  

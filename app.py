@@ -38,7 +38,7 @@ def new_category():
         category = Category(title=title)
         db.session.add(category)
         db.session.commit()
-        return redirect(url_for('category'))
+        return redirect('/category/' + str(category.id))
     category_list = Category.query.all()
     return render_template('new_category.html',categorys=category_list)
 
@@ -51,7 +51,7 @@ def edit_category(category_id):
         category.title=request.form['title']
         db.session.add(category)
         db.session.commit()
-        return redirect(url_for('/'))
+        return redirect('/category/' + str(category.id))
     category_list = Category.query.all()
     return render_template('edit_category.html',  category=category,categorys=category_list)
 
@@ -64,7 +64,7 @@ def delete_category(category_id: int):
     if request.method == 'POST':
       db.session.delete(category)
       db.session.commit()
-      return redirect(url_for('category'))
+      return redirect(url_for('post'))
     category_list = Category.query.all()
     return render_template('delete_category.html',category=category,categorys=category_list)  
 
@@ -113,7 +113,7 @@ def edit_post(post_id):
         category.title=request.form['title-category']
         db.session.add(edit_blog,category)
         db.session.commit()
-        return redirect(url_for('post'))
+        return redirect('/post/' + str(post.id))
     category_list = Category.query.all()
     return render_template('edit_post.html', post = edit_blog, category = category, categorys = category_list)  
 
